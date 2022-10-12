@@ -14,3 +14,22 @@ function validar(){
         }
         
 }
+
+var getData = function(){
+    var descrip = document.getElementById("descripcion").value
+    var monto = document.getElementById("monto").value
+    if (descrip=="") {
+        var descrip = document.getElementById("descripcion").focus();
+    } else {
+        if (monto=="") {
+            var descrip = document.getElementById("monto").focus();
+        } else {
+            console.log(descrip+" "+monto);
+            var descrip = document.getElementById("descripcion").value="";
+            var monto = document.getElementById("monto").value="";
+            var descrip = document.getElementById("descripcion").focus();
+        }
+    }
+    
+}
+

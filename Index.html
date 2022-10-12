@@ -59,22 +59,22 @@
            
               <div class="col-xl-7  mx-auto col-8 ">
                 <div class=" ">
-                <select name="tipo" id="tipo" class="form-control">
-                  <option value="0" >Ingreso | Egreso</option>
+                <select name="tipo" id="tipo" class="dropdown-item">
+                  <option value="" hidden>Ingreso | Egreso</option>
                   <option value="1" >Ingreso</option>
                   <option value="2" >Egreso</option>
                 </select>
               </div>
                <br>
                 <div class=" ">
-                  <input type="text" class="form-control" placeholder="Descripcion" aria-label="First name">
+                  <input type="text" class="form-control" id="descripcion" placeholder="Descripcion" aria-label="First name">
                 </div>
                 <br>
                 <div class=" ">
-                  <input type="text" class="form-control" placeholder="Monto" aria-label="Last name">
+                  <input type="text" class="form-control" id="monto" placeholder="Monto" aria-label="Last name">
                 </div>
                 <br>
-                <button type="button" onclick="validar();" value="validar" class=" col-sm-12 col-12 btn btn-dark mx-auto mb-3 ">Agregar</button>
+                <button type="button" onclick="getData();" value="validar" class=" col-sm-12 col-12 btn btn-dark mx-auto mb-3 ">Agregar</button>
                 <hr>
                 
               </div>  
@@ -83,15 +83,15 @@
     </div>
      <div class="botones col-6 mx-auto"> 
         <div class="mx-auto col-xl-4  mx-auto  d-block ">
-            <div class="btn-group ">
+            <div class="btn-group " >
                 
                 <button type="button" class="btn btn-outline-dark fs-5">Ingresos</button>
                 <button type="button" class="btn btn-outline-dark fs-5">Egresos</button>
               </div>
         </div>
         <br>
-        <div class="historial col-xl-6 mx-auto shadow  d-block   border border-dark">
-            <h2>Salario   $500</h2>            
+        <div class="historial col-xl-6 mx-auto shadow  d-block   border border-dark" id="historialtable">
+            <h2>Salario  $500</h2>            
         </div>       
         <br>
         <br>

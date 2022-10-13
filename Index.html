@@ -70,11 +70,11 @@
               </div>
                <br>
                 <div class=" ">
-                  <input type="text" class="form-control" id="descripcion" placeholder="Descripcion" aria-label="First name">
+                  <input type="text" required class="form-control" id="descripcion" placeholder="Descripcion" aria-label="First name">
                 </div>
                 <br>
                 <div class=" ">
-                  <input type="text" class="form-control" id="monto" placeholder="Monto" aria-label="Last name">
+                  <input type="text"  class="form-control" value="0" id="monto" aria-label="Last name" required>
                 </div>
                 <br>
                 <button type="button" onclick="validar();" value="validar" class=" col-sm-12 col-12 btn btn-dark mx-auto mb-3 ">Agregar</button>
@@ -88,12 +88,18 @@
         <div class="mx-auto col-xl-4  mx-auto  d-block ">
             <div class="btn-group " >
                 
-                <button type="button" class="btn btn-outline-dark fs-5">Ingresos</button>
-                <button type="button" class="btn btn-outline-dark fs-5">Egresos</button>
+                <button type="button" class="btn btn-outline-dark fs-5" onclick="ocultar();">Ingresos</button>
+                <button type="button" class="btn btn-outline-dark fs-5" onclick="genera_tablaEgresos(); mostrar();">Egresos</button>
               </div>
         </div>
         <br>
         <div class="historial col-xl-6 mx-auto shadow  d-block   border border-dark" id="historialtable">
+          <table id="tblegresos" class="table table-hover">
+            <tbody id="tbody">
+
+            </tbody>
+          </table>
+          
           
                   
       </div>    

@@ -1,6 +1,8 @@
-
+var ingresos = []; //arreglo de ingreso
 var egresos = []; //arreglo de egreso
 document.getElementById('monto').value=0; //ignorar 
+document.getElementById('tblegresos').style.display = "none";
+
 
 
 
@@ -38,14 +40,13 @@ function validar(){
                     
                     if (tipo.value==1){
                 
-                        let h4 = document.createElement('h4');
-                        h4.textContent = descrip + ": $" + monto;
-        
-                        let tabla=document.getElementById("historialtable");
-                        tabla.appendChild(h4);
+                        
+                        ingresos.push([descrip + ": $", monto]); //agrega los datos al arreglo
+                        genera_tablaIngresos(); // muestra los datos del arreglo en la tabla
+                        
                     }
                     else{
-                        egresos.push([descrip +" $ ",monto]); //agrega los datos al arreglo
+                        egresos.push([descrip + ": $", monto]); //agrega los datos al arreglo
                         genera_tablaEgresos(); // muestra los datos del arreglo en la tabla
                         
             
@@ -68,10 +69,18 @@ var getData = function(){
 }
 
 function ocultar (){ //metodo ocultar
-    document.getElementById('tblegresos').style.visibility = "hidden";               
+    document.getElementById('tblegresos').style.display = "none";
+    document.getElementById('tblingresos').style.display = "table";
+
+    var tblBody = document.getElementById("tbody");
+    tblBody.replaceChildren("");
 }
 function mostrar (){ //metodo mostrar
-    document.getElementById('tblegresos').style.visibility = "visible";               
+    document.getElementById('tblegresos').style.display = "table";
+    document.getElementById('tblingresos').style.display = "none";  
+    
+    var tblBody = document.getElementById("tingresos");
+    tblBody.replaceChildren("");
 }
 
 
@@ -94,3 +103,24 @@ function genera_tablaEgresos() {
     
   }
 
+
+
+
+
+/* metodo de la tabla*/
+function genera_tablaIngresos() {
+    var tblBody = document.getElementById("tingresos");
+    tblBody.replaceChildren("");
+    for(var trans in ingresos){
+        var hilera = document.createElement("tr");
+        for(var i =0;i<2;i++){
+            var celda = document.createElement("td");
+            var textoCelda = document.createTextNode(ingresos[trans][i])
+            celda.appendChild(textoCelda);
+            hilera.appendChild(celda);
+        }
+
+        tblBody.appendChild(hilera);
+    }
+    
+  }

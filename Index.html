@@ -88,7 +88,7 @@
         <div class="mx-auto col-xl-4  mx-auto  d-block ">
             <div class="btn-group " >
                 
-                <button type="button" class="btn btn-outline-dark fs-5" onclick="ocultar();">Ingresos</button>
+                <button type="button" class="btn btn-outline-dark fs-5" onclick="genera_tablaIngresos(); ocultar();">Ingresos</button>
                 <button type="button" class="btn btn-outline-dark fs-5" onclick="genera_tablaEgresos(); mostrar();">Egresos</button>
               </div>
         </div>
@@ -99,10 +99,16 @@
 
             </tbody>
           </table>
-          
+          <table id="tblingresos" class="table table-hover">
+            <tbody id="tingresos">
+
+            </tbody>
+          </table>
           
                   
-      </div>    
+      </div>  
+      
+      
         <br>
         <br>
     </div> 

@@ -124,3 +124,9 @@ function genera_tablaIngresos() {
     }
     
   }
+  
+  /*Metodo suma ingresos*/
+  function genera_sumaIngresos(){
+    var n1,n2,suma;
+
+  }

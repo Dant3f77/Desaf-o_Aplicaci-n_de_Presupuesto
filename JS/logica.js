@@ -115,7 +115,7 @@ function genera_tablaIngresos() {
         var hilera = document.createElement("tr");
         for(var i =0;i<2;i++){
             var celda = document.createElement("td");
-            var textoCelda = document.createTextNode(ingresos[trans][i])
+            var textoCelda = document.createTextNode(ingresos[trans][i]+"")
             celda.appendChild(textoCelda);
             hilera.appendChild(celda);
         }
@@ -127,6 +127,10 @@ function genera_tablaIngresos() {
   
   /*Metodo suma ingresos*/
   function genera_sumaIngresos(){
-    var n1,n2,suma;
-
+    var total; 
+    alert("Hola MUNDO")
+    for(var trans in ingresos){
+        total+= ingresos[trans][2];
+    }
+    alert(total);
   }

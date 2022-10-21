@@ -127,10 +127,28 @@ function genera_tablaIngresos() {
   
   /*Metodo suma ingresos*/
   function genera_sumaIngresos(){
-    var total; 
-    alert("Hola MUNDO")
-    for(var trans in ingresos){
-        total+= ingresos[trans][2];
+    var total=0; //variable donde se guarda el total de ingresos
+    total = parseFloat(total); //convertimos la variable total en float 
+    for(var trans in ingresos){ //ciclo para recorrer el arreglo
+        total= total+parseFloat (ingresos[trans][2]; //En la posicion 2 esta el monto                             
     }
-    alert(total);
+    total = total.toFixed(2)//le agrefo los dos decimas al total
+    var span = document.getElementById("montoIngreso"); //accedemos a la etiqueta span del html
+    span.replaceChild(""); //borramos los que span tenga
+    var monto = documento.createTextNode(total) //presnetemos el nuevo valor para asignarlo a span
+    span.appendChild (monto); //asignamos a la etiqueta span el nuevo valor 
+  }
+
+  /*Metodo resta engresos*/
+  function gerera_restaEngresos()
+    var total=0;//variable donde se guarda el total de egresos
+    total = parseFloat(total); //convertimos la variable total en float 
+    for(var trans in engresos){ //ciclo para recorrer el arreglo
+        total= total-parseFloat (engresos[trans][2]; //En la posicion 2 esta el monto                             
+    }
+    total = total.toFixed(2)//le agrefo los dos decimas al total
+    var span = document.getElementById("montoIngreso"); //accedemos a la etiqueta span del html
+    span.replaceChild(""); //borramos los que span tenga
+    var monto = documento.createTextNode(total) //presnetemos el nuevo valor para asignarlo a span
+    span.appendChild (monto); //asignamos a la etiqueta span el nuevo valor 
   }

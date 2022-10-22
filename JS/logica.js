@@ -1,5 +1,9 @@
 var ingresos = []; //arreglo de ingreso
 var egresos = []; //arreglo de egreso
+var totalIngresos = 0; 
+var totalEgreso = 0;
+var montoTotal = 0;
+var porcentajeTotal = 0;
 document.getElementById('monto').value=0; //ignorar 
 document.getElementById('tblegresos').style.display = "none";
 
@@ -46,8 +50,10 @@ function validar(){
                         
                     }
                     else{
-                        egresos.push([descrip + ": $", monto]); //agrega los datos al arreglo
+                        egresos.push([descrip + ": $", monto , ((monto*100)/totalIngresos).toFixed(2) + "%" ]); //agrega los datos al arreglo
                         genera_tablaEgresos(); // muestra los datos del arreglo en la tabla
+
+                       /* porcentaje();*/
                         
             
                     }
@@ -91,14 +97,21 @@ function genera_tablaEgresos() {
     tblBody.replaceChildren("");
     for(var trans in egresos){
         var hilera = document.createElement("tr");
-        for(var i =0;i<2;i++){
+        for(var i =0;i<3;i++){
             var celda = document.createElement("td");
-            var textoCelda = document.createTextNode(egresos[trans][i])
+            if (i==2) {
+                celda.style.backgroundColor = "black";
+                celda.style.color = "white";
+                celda.style.borderRadius = "10px";
+                
+            }
+            var textoCelda = document.createTextNode(egresos[trans][i]);
             celda.appendChild(textoCelda);
             hilera.appendChild(celda);
         }
 
         tblBody.appendChild(hilera);
+       
     }
     
   }
@@ -130,25 +143,56 @@ function genera_tablaIngresos() {
     var total=0; //variable donde se guarda el total de ingresos
     total = parseFloat(total); //convertimos la variable total en float 
     for(var trans in ingresos){ //ciclo para recorrer el arreglo
-        total= total+parseFloat (ingresos[trans][2]; //En la posicion 2 esta el monto                             
+        total= total+parseFloat(ingresos[trans][1]); //En la posicion 2 esta el monto                             
     }
     total = total.toFixed(2)//le agrefo los dos decimas al total
     var span = document.getElementById("montoIngreso"); //accedemos a la etiqueta span del html
-    span.replaceChild(""); //borramos los que span tenga
-    var monto = documento.createTextNode(total) //presnetemos el nuevo valor para asignarlo a span
-    span.appendChild (monto); //asignamos a la etiqueta span el nuevo valor 
+    span.replaceChildren(""); //borramos los que span tenga
+    var monto = document.createTextNode(total); //presnetemos el nuevo valor para asignarlo a span
+    span.appendChild(monto); //asignamos a la etiqueta span el nuevo valor
+    totalIngresos = total;
+    montoTotal = totalIngresos - totalEgreso;
+    var b = document.getElementById("montoTotal");
+    b.replaceChildren("");
+    var montob = document.createTextNode("$"+montoTotal); 
+    b.appendChild(montob);
+    
   }
+  
 
   /*Metodo resta engresos*/
-  function gerera_restaEngresos()
+  function gerera_restaEngresos(){
     var total=0;//variable donde se guarda el total de egresos
     total = parseFloat(total); //convertimos la variable total en float 
-    for(var trans in engresos){ //ciclo para recorrer el arreglo
-        total= total-parseFloat (engresos[trans][2]; //En la posicion 2 esta el monto                             
+    for(var trans in egresos){ //ciclo para recorrer el arreglo
+        total= total+parseFloat(egresos[trans][1]); //En la posicion 2 esta el monto                             
+    
     }
     total = total.toFixed(2)//le agrefo los dos decimas al total
-    var span = document.getElementById("montoIngreso"); //accedemos a la etiqueta span del html
-    span.replaceChild(""); //borramos los que span tenga
-    var monto = documento.createTextNode(total) //presnetemos el nuevo valor para asignarlo a span
-    span.appendChild (monto); //asignamos a la etiqueta span el nuevo valor 
-  }
+    var span = document.getElementById("montoEgresos"); //accedemos a la etiqueta span del html
+    span.replaceChildren(""); //borramos los que span tenga
+    var monto = document.createTextNode(total); //presnetemos el nuevo valor para asignarlo a span
+    span.appendChild(monto); //asignamos a la etiqueta span el nuevo valor 
+    totalEgreso = total;
+    montoTotal = totalIngresos - totalEgreso;
+    var b = document.getElementById("montoTotal");
+    b.replaceChildren("");
+    var montob = document.createTextNode("$"+montoTotal); 
+    b.appendChild(montob);
+ 
+}
+
+/*metodo porcentaje*/
+
+function porcentaje() {
+    
+    porcentajeTotal = (totalEgreso*100)/totalIngresos;
+    porcentajeTotal = porcentajeTotal.toFixed(2);
+    var spant = document.getElementById("porcentajeT");
+    spant.replaceChildren("");
+    var porTotal = document.createTextNode(porcentajeTotal + "%");
+    spant.appendChild(porTotal);
+    
+    
+}
+ 
